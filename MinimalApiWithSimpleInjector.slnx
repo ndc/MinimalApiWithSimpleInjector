@@ -1,4 +1,3 @@
 <Solution>
-  <Project Path="ApplicationService/ApplicationService.csproj" Id="98d0c035-d904-4843-ad60-a95b357ed0be" />
   <Project Path="MinimalApiWithSimpleInjector/MinimalApiWithSimpleInjector.csproj" />
 </Solution>

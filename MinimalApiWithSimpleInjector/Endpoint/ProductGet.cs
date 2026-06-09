@@ -1,29 +1,16 @@
-﻿using ApplicationService;
-using ApplicationService.Product;
-using Microsoft.AspNetCore.Http.HttpResults;
-using OneOf;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace MinimalApiWithSimpleInjector.Endpoint;
 
-public class ProductGet(
-    ICommandHandler<ProductGetRequest, OneOf<ProductGetResponse, ProductGetError>> handler
-    )
+public class ProductGet()
 {
-    public async Task<Results<Ok<ProductGetResponse>, BadRequest>> ExecuteAsync(string Category)
+    public async Task<Results<Ok<ProductGetResponse>, BadRequest>> ExecuteAsync(HttpContext context)
     {
-        var command = new ProductGetRequest
-        {
-            Category = Category
-        };
-        var result = await handler.HandleAsync(command);
-
-        if (result.TryPickT0(out var product, out var error))
-        {
-            return TypedResults.Ok(product);
-        }
-        else
-        {
-            return TypedResults.BadRequest();
-        }
+        return TypedResults.Ok(new ProductGetResponse { Code = Guid.NewGuid().ToString() });
     }
+}
+
+public class ProductGetResponse
+{
+    public string Code { get; set; }
 }

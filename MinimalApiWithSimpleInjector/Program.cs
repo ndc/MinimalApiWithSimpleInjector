@@ -4,7 +4,6 @@ using SimpleInjector;
 var builder = WebApplication.CreateBuilder(args);
 
 var container = new Container();
-container.Options.DefaultScopedLifestyle = new SimpleInjector.Lifestyles.AsyncScopedLifestyle();
 
 builder.Services.AddSimpleInjector(container, options =>
 {
@@ -18,10 +17,6 @@ builder.Services.AddOpenApi();
 var app = builder.Build();
 
 ((IApplicationBuilder)app).UseSimpleInjector(container);
-
-var svcAssembly = typeof(ApplicationService.Product.ProductGetHandler).Assembly;
-container.Register(typeof(ApplicationService.ICommandHandler<,>), new[] { svcAssembly });
-container.RegisterDecorator(typeof(ApplicationService.ICommandHandler<,>), typeof(ApplicationService.LogProductGetHandler<,>));
 
 var apiAssembly = typeof(EndpointRegistration).Assembly;
 var types = apiAssembly.GetTypes().Where(t => t.IsClass

@@ -1,6 +1,9 @@
 @MinimalApiWithSimpleInjector_HostAddress = http://localhost:5266
 
-GET {{MinimalApiWithSimpleInjector_HostAddress}}/product?Category=food
+GET {{MinimalApiWithSimpleInjector_HostAddress}}/product
 Accept: application/json
 
 ###
+
+GET {{MinimalApiWithSimpleInjector_HostAddress}}/succcessfulproduct
+Accept: application/json
