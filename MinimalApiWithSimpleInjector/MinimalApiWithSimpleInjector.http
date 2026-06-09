@@ -13,3 +13,7 @@ Accept: application/json
 GET {{MinimalApiWithSimpleInjector_HostAddress}}/withouthttpcontext
 Accept: application/json
 
+###
+
+GET {{MinimalApiWithSimpleInjector_HostAddress}}/withcontainerindi
+Accept: application/json

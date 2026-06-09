@@ -16,6 +16,8 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddSingleton(c => new HttpClient());
 
+builder.Services.AddSingleton(c => container);
+
 var app = builder.Build();
 
 ((IApplicationBuilder)app).UseSimpleInjector(container);

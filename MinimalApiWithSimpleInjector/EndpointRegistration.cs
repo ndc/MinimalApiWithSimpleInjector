@@ -25,5 +25,11 @@ public static class EndpointRegistration
         app.MapGet("/withouthttpcontext", async (
             HttpClient httpClient
             ) => await container.GetInstance<ProductGet>().WithoutHttpContext(httpClient));
+
+        // if SimpleInjector is registered in services, response is fine
+        app.MapGet("/withcontainerindi", async (
+            HttpContext context,
+            SimpleInjector.Container containerInner
+            ) => await containerInner.GetInstance<ProductGet>().ExecuteAsync(context));
     }
 }
