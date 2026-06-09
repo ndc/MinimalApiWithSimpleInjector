@@ -20,5 +20,10 @@ public static class EndpointRegistration
             var result = await container.GetInstance<ProductGet>().ExecuteAsync(context);
             return result;
         });
+
+        // other dependencies are not producing this issue
+        app.MapGet("/withouthttpcontext", async (
+            HttpClient httpClient
+            ) => await container.GetInstance<ProductGet>().WithoutHttpContext(httpClient));
     }
 }

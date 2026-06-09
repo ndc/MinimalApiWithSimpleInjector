@@ -14,6 +14,8 @@ builder.Services.AddSimpleInjector(container, options =>
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
+builder.Services.AddSingleton(c => new HttpClient());
+
 var app = builder.Build();
 
 ((IApplicationBuilder)app).UseSimpleInjector(container);

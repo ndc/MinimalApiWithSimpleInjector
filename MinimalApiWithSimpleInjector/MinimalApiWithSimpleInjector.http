@@ -7,3 +7,9 @@ Accept: application/json
 
 GET {{MinimalApiWithSimpleInjector_HostAddress}}/succcessfulproduct
 Accept: application/json
+
+###
+
+GET {{MinimalApiWithSimpleInjector_HostAddress}}/withouthttpcontext
+Accept: application/json
+
